@@ -214,8 +214,8 @@ glib_deps = [dependency('glib-2.0', version : glib_req, fallback: ['glib', 'libg
              dependency('gobject-2.0', fallback: ['glib', 'libgobject_dep'])]
 # GIO is used by the GIO plugin, and by the TCP, SDP, and RTSP plugins
 gio_dep = dependency('gio-2.0', fallback: ['glib', 'libgio_dep'])
-giounix_dep = dependency('gio-unix-2.0', version : glib_req, required : host_system != 'windows',
-                         fallback: ['glib', 'libgiounix_dep'])
+#giounix_dep = dependency('gio-unix-2.0', version : glib_req, required : host_system != 'windows',
+#                         fallback: ['glib', 'libgiounix_dep'])
 
 # some of the examples can use gdk-pixbuf and GTK+3
 gdk_pixbuf_dep = dependency('gdk-pixbuf-2.0', required : get_option('examples'))
@@ -234,7 +234,7 @@ else
 endif
 
 core_conf.set('HAVE_X', x11_dep.found())
-core_conf.set('HAVE_GIO_UNIX_2_0', giounix_dep.found())
+#core_conf.set('HAVE_GIO_UNIX_2_0', giounix_dep.found())
 
 if gio_dep.type_name() == 'pkgconfig'
     core_conf.set_quoted('GIO_MODULE_DIR',
